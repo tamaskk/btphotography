@@ -1,3 +1,4 @@
+import { useMainContext } from "@/lib/mainContext";
 import Autocomplete from "@mui/joy/Autocomplete";
 import Box from "@mui/joy/Box";
 import Chip from "@mui/joy/Chip";
@@ -51,6 +52,7 @@ const Sidebar = () => {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
   const [notificationOpened, setNotificationOpened] = useState(false);
+  const { setChoosenPanel } = useMainContext();
 
   const router = useRouter();
 
@@ -122,7 +124,7 @@ const Sidebar = () => {
           sx={{
             width: "100%",
           }}
-          onClick={() => router.push("/dashboard")}
+          onClick={() => setChoosenPanel("Új album")}
         >
           <ListItemButton>
             <ListItemContent>
@@ -135,7 +137,7 @@ const Sidebar = () => {
           sx={{
             width: "100%",
           }}
-          onClick={() => router.push("/dashboard")}
+          onClick={() => setChoosenPanel("Album beállítások")}
         >
         <ListItemButton>
             <ListItemContent>
@@ -148,7 +150,7 @@ const Sidebar = () => {
           sx={{
             width: "100%",
           }}
-          onClick={() => router.push("/dashboard")}
+          onClick={() => router.push("/albums")}
         >
         <ListItemButton>
             <ListItemContent>
@@ -161,7 +163,7 @@ const Sidebar = () => {
           sx={{
             width: "100%",
           }}
-          onClick={() => router.push("/dashboard")}
+          onClick={() => setChoosenPanel("Naptár")}
         >
         <ListItemButton>
             <ListItemContent>

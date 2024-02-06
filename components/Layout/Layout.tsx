@@ -1,7 +1,7 @@
 import Sheet from "@mui/joy/Sheet";
 import React, { useEffect, useState } from "react";
 import Sidebar from "../Sidebar/Sidebar";
-import { CssVarsProvider, useColorScheme } from "@mui/joy/styles";
+import { CssVarsProvider } from "@mui/joy/styles";
 import { getSession } from "next-auth/react";
 
 interface LayoutProps {
@@ -9,7 +9,6 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const { mode, setMode } = useColorScheme();
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
   const [userData, setUserData] = useState<any>();
