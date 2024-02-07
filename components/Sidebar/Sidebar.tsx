@@ -150,11 +150,11 @@ const Sidebar = () => {
           sx={{
             width: "100%",
           }}
-          onClick={() => router.push("/albums")}
+          onClick={() => router.push("/albumok")}
         >
         <ListItemButton>
             <ListItemContent>
-              <Typography level="title-sm">Új album</Typography>
+              <Typography level="title-sm">Albumok</Typography>
             </ListItemContent>
           </ListItemButton>
         </ListItem>

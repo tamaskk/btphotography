@@ -2,8 +2,8 @@ import React from 'react'
 import Sidebar from '../Sidebar/Sidebar'
 import { useMainContext } from '@/lib/mainContext';
 import Newalbum from '../Newalbum/Newalbum';
-import Calendar from '../Calendar/Calendar';
 import Albumsettings from '../Albumsettings/Albumsettings';
+import CalendarPage from '../Calendar/Calendar';
 
 const Dashboard = () => {
 
@@ -16,7 +16,7 @@ const Dashboard = () => {
       case "Album beállítások":
         return <Albumsettings />;
       case "Naptár":
-        return <Calendar />;
+        return <CalendarPage />;
       default:
         return null; // Add a default case or handle unknown panels
     }

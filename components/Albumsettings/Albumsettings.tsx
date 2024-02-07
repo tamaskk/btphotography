@@ -22,6 +22,8 @@ function Albumsettings() {
       try {
         const res = await fetch("api/album/getAllAlbums");
         const data = await res.json();
+        console.log(data);
+        
         setData(data);
         setLoading(false);
       } catch (error) {
@@ -100,7 +102,7 @@ function Albumsettings() {
 
       {!view && data && Object.values(data).length > 0 && (
         <div className="w-full flex flex-row flex-wrap gap-4 px-4 md:px-10 pt-4 relative z-1">
-          {data.map((item: any) => (
+          {data?.map((item: any) => (
             <div
               key={item.id}
               className="relative shadow-xl z-[1] md:z-1 bg-white rounded-lg w-auto p-3 flex flex-col justify-center items-center h-auto pt-5"

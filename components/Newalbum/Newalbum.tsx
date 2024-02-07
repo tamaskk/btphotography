@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import crypto from 'bcryptjs';
 
 function Newalbum() {
   const [loading, setLoading] = useState(false);
@@ -13,6 +14,7 @@ function Newalbum() {
   const postData = async (e: any) => {
     e.preventDefault();
 
+
     if (
       albumData.albumName === "" ||
       albumData.albumDate === "" ||
@@ -25,13 +27,14 @@ function Newalbum() {
     }
 
     try {
+
       setLoading(true);
       const res = await fetch("api/album/newAlbum", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ albumData }),
+        body: JSON.stringify( {albumData} ),
       });
 
       const data = await res.json();
@@ -109,7 +112,7 @@ function Newalbum() {
             </h1>
             <input
               onChange={(e) =>
-                setAlbumData({ ...albumData, albumPassword: e.target.value })
+                setAlbumData({ ...albumData, albumPassword: e.target.value})
               }
               value={albumData.albumPassword}
               placeholder="Budapest2024"

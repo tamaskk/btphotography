@@ -1,5 +1,6 @@
 import { connectToDatabase } from "@/db/db";
 import { NextApiResponse, NextApiRequest } from "next";
+import crypto from "bcryptjs";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method !== "POST") {
@@ -12,6 +13,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         return res.status(400).json({ message: "Missing album data" });
     }
 
+    const newAlbum = {
+        ...albumData,
+        albumPassword: crypto.hashSync(albumData.albumPassword, 10),
+    }
+    
+
     try {
 
         const client = await connectToDatabase();
@@ -20,7 +27,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
         const albumCollection = db.collection("albums");
 
-        const result = await albumCollection.insertOne(albumData);
+        const result = await albumCollection.insertOne(newAlbum);
 
         return res.status(201).json({ message: "Album created" });
     } catch (error) {

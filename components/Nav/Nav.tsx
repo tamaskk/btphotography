@@ -111,7 +111,7 @@ function Navbar() {
                 <div className="group transition-all duration-300">
 
                 {/* Use NavLink to navigate */}
-                <a href="/album" className='cursor-pointer tracking-widest text-3xl transition-all duration-200'>
+                <a href="/albumok" className='cursor-pointer tracking-widest text-3xl transition-all duration-200'>
                     Albumok
                 </a>
                 <div className='border-b-2 border-black group-hover:border-white w-0 group-hover:w-full transition-all duration-300'></div>
