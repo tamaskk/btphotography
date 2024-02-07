@@ -1,0 +1,23 @@
+.customCalendar-container {
+  width: 600px;
+  max-width: 100%;
+  height: auto;
+}
+
+.customCalendar {
+  font-family: Arial, sans-serif;
+  width: 100%;
+  height: auto;
+  justify-content: space-between;
+}
+
+/* Customize specific elements within the calendar */
+.customCalendar .react-calendar__tile--active {
+  background-color: white;
+  color: white;
+}
+
+.customCalendar .react-calendar__tile--active:hover,
+.customCalendar .react-calendar__tile--active:focus {
+  background-color: #1087ff;
+}

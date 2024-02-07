@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import Calendar from "react-calendar";
-import classes from './calendarStyle.module.css'
+import 'react-calendar/dist/Calendar.css'; 
+import styles from './CustomCalendar.module.css';
 
 const CalendarPage = () => {
   // State variables
-  const [calendarEvents, setCalendarEvents] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -44,26 +44,6 @@ const CalendarPage = () => {
     };
     fetchData();
   }, []);
-
-  // Fetch data function
-  // const fetchData = async () => {
-  //     try {
-  //         setLoading(true);
-  //         const response = await axios.get('https://btphotography-50f60-default-rtdb.firebaseio.com/events.json');
-  //         if (response.data === null) {
-  //             setZero(true);
-  //             setLoading(false);
-  //             return;
-  //         }
-  //         setDataForId(response.data);
-  //         const dataArray = Object.values(response.data);
-  //         setData(dataArray);
-  //     } catch (error) {
-  //         alert("An error occurred while fetching data: " + error.message);
-  //     } finally {
-  //         setLoading(false);
-  //     }
-  // };
 
   // Post new event data
   const postData = async (e: any) => {
@@ -248,20 +228,21 @@ const CalendarPage = () => {
       {/* Add event button */}
       <button
         onClick={postData}
-        className="w-2/6 border-none bg-lime-500 text-white py-4 rounded-lg mb-4 hover:bg-lime-600 "
+        className="w-2/6 border-none bg-lime-500 text-white py-4 rounded-lg hover:bg-lime-600 mb-20"
       >
         Add to Calendar
       </button>
       {/* Display messages */}
       {loading && <h1 className="text-4xl mb-2">Betöltés...</h1>}
       {/* Calendar */}
-      <div className="w-full h-full flex flex-col items-center justify-center">
+      <div className={`w-full h-full flex flex-col items-center justify-center mt-96 ${styles.customCalendarContainer}`}>
         <Calendar
-          className={classes.reactCalendar}
+        className={styles.customCalendar}
           value={selectedDate}
           tileContent={({ date, view }) =>
             tileContent({ date, view, data, handleDelete: deleteItem})
           }
+          tileClassName="h-80 border-2"
           
         />
       </div>
